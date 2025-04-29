@@ -35,22 +35,25 @@ function speakWord(word) {
 
     // Set some speech properties
     speech.lang = 'en-US'; // Set language to English
-    speech.pitch = 0.01// Lower pitch for a deeper tone
-    speech.rate =0.5// Adjust speed (normal speed)
+    speech.pitch = 0.3// Lower pitch for a deeper tone
+    speech.rate =1// Adjust speed (normal speed)
 
     // Speak the word
     window.speechSynthesis.speak(speech);
 }
 
 function checkSpelling() {
-    const userAnswer = document.getElementById("userInput").value.trim().toLowerCase();
-    const correctAnswer = currentWord.toLowerCase();
+  const userAnswer = document.getElementById("userInput").value.trim().toLowerCase();
+  const correctAnswer = currentWord.toLowerCase();
 
-    if (userAnswer === correctAnswer) {
-        document.getElementById("result").textContent = "✅ Correct!";
-        document.getElementById("result").style.color = "green";
-    } else {
-        document.getElementById("result").textContent = "❌ Try Again!";
-        document.getElementById("result").style.color = "blue"; // or "red" if you prefer
-    }
+  if (userAnswer === correctAnswer) {
+      document.getElementById("result").textContent = "✅ Correct!";
+      document.getElementById("result").style.color = "green";
+      speakWord("Correct!"); // Speak confirmation
+  } else {
+      document.getElementById("result").textContent = "❌ Try Again!";
+      document.getElementById("result").style.color = "blue"; // or "red" if you prefer
+      speakWord("Try Again!!"); // Speak confirmation
+  }
 }
+
